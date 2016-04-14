@@ -18,21 +18,47 @@
       //put stuff here
     }
     public function deal(){
-      //put stuff here
+      $randomCard = rand(1,count($this->deck));
+      $card = $this->deck[$randomCard];
+
+      var_dump($card);
+      return $card->card;
+
+
     }
   }
   class Card{
-    public $suit;
-    public $value;
+    public $card;
     function __construct($suit,$value){
-      $this->suit = $suit;
-      $this->value = $value;
+      $this->card = "$suit$value";
       return $this;
     }
   }
+
+
+  class Player{
+
+    public function __construct($name){
+      $name;
+      $hand = array();
+      $this->name = $name;
+      $this->hand = $hand;
+    }
+    public function draw(){
+      echo $newDeck->deal();
+      // return deal();
+    }
+
+    public function discard(){
+
+    }
+
+  }
+
   $newDeck = new Deck();
-  var_dump($newDeck);
-  $newDeck->shuffleCards();
-  var_dump($newDeck);
+  echo $newDeck->deal();
+  $player1 = new Player('Jeff');
+  // $player1->draw();
+  var_dump($player1);
 
  ?>
