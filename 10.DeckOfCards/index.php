@@ -1,4 +1,5 @@
 <?php
+
   class Deck{
     function __construct(){
       $deck =  array();
@@ -10,6 +11,7 @@
         }
       }
       $this->deck = $deck;
+      $this->shuffleCards();
     }
     public function shuffleCards(){
       shuffle($this->deck);
@@ -20,10 +22,9 @@
     public function deal(){
       $randomCard = rand(1,count($this->deck));
       $card = $this->deck[$randomCard];
-
+      //still working on this
       var_dump($card);
       return $card->card;
-
 
     }
   }
@@ -45,7 +46,7 @@
       $this->hand = $hand;
     }
     public function draw(){
-      echo $newDeck->deal();
+      // echo $newDeck->deal();
       // return deal();
     }
 
@@ -55,10 +56,34 @@
 
   }
 
-  $newDeck = new Deck();
-  echo $newDeck->deal();
-  $player1 = new Player('Jeff');
+  class Game{
+      public $players;
+      // public $deck;
+
+    public function __construct(){
+      $this->deck = new Deck();
+    }
+    public function addPlayer($name){
+      $this->players[] = new Player($name);
+    }
+    public function gameDeal(){
+      //add stuff
+    }
+  }
+
+
+  $newGame = new Game();
+  $newGame->addPlayer('Jeff');
+  $newGame->addPlayer('Kazu');
+
+
+// $newGame->deck->shuffleCards();//this works
+var_dump($newGame);
+
+
+  // $newDeck = new Deck();
+  // echo $newDeck->deal();
   // $player1->draw();
-  var_dump($player1);
+  // var_dump($player1);
 
  ?>
